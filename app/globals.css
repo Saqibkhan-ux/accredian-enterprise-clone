@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F7F6F2;
+  color: #0B1220;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus ring, consistent across interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #C89B3C;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Ledger / transcript hairline motif — the page's signature device */
+.hairline {
+  border-top: 1px solid rgba(11, 18, 32, 0.12);
+}
+
+.hairline-gold {
+  border-top: 1px solid rgba(200, 155, 60, 0.55);
+}
+
+.ledger-corner {
+  position: relative;
+}
+
+.ledger-corner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 22px 22px 0;
+  border-color: transparent #C89B3C transparent transparent;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.is-visible {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
