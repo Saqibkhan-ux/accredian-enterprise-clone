@@ -42,6 +42,34 @@ components/
 lib/
   data.ts               # all copy/content, typed and centralized
 ```
+## Approach Taken
+
+1. Explored the project structure and understood the component hierarchy.
+2. Reviewed reusable UI components and the Next.js App Router architecture.
+3. Implemented the required assignment changes while maintaining the existing design system.
+4. Tested the application locally in both development and production modes.
+5. Used Git for version control and pushed changes to GitHub.
+6. Deployed the project on Vercel.
+7. Debugged and resolved a deployment issue caused by connecting Vercel to the wrong GitHub repository.
+
+## AI Usage
+
+AI was used as a development assistant to improve productivity and understand the existing codebase.
+
+### Where AI helped
+
+- Understanding the project architecture and component structure.
+- Explaining existing React and Next.js code.
+- Suggesting implementation ideas for the required changes.
+- Helping analyze bugs and identify possible causes during development.
+- Reviewing code and suggesting improvements.
+
+### What I modified manually
+
+- Implemented the required assignment features and changes.
+- Reviewed and integrated AI-generated code where appropriate.
+- Fixed issues introduced during development, including resolving a blank page rendering issue by debugging and correcting the code manually.
+- Tested the application locally and verified the final functionality before deployment.
 
 ## Design notes
 
