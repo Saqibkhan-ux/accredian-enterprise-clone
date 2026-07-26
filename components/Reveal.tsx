@@ -5,9 +5,10 @@ import { useState, useEffect, useRef, type ReactNode } from "react";
 type RevealProps = {
   children: ReactNode;
   delayMs?: number;
+  className?: string;
 };
 
-export default function Reveal({ children, delayMs = 0 }: RevealProps) {
+export default function Reveal({ children, delayMs = 0, className }: RevealProps) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -34,7 +35,11 @@ export default function Reveal({ children, delayMs = 0 }: RevealProps) {
   }, []);
 
   return (
-    <div ref={ref} className={`reveal ${isVisible ? "is-visible" : ""}`} style={{ animationDelay: `${delayMs}ms` }}>
+    <div
+      ref={ref}
+      className={`reveal ${isVisible ? "is-visible" : ""} ${className ?? ""}`}
+      style={{ animationDelay: `${delayMs}ms` }}
+    >
       {children}
     </div>
   );
