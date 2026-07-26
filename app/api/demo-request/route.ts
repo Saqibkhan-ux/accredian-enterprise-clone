@@ -39,14 +39,16 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Simulate a small amount of network latency for a realistic UI state.
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  // --- Store the data ---
+  // This is where you would add your logic to save the lead to a database
+  // (e.g., using Prisma) or send it to a CRM (e.g., HubSpot, Salesforce).
+  // For this example, we'll just log it to the server console.
+  console.log("✅ New lead captured:", { name, workEmail, company, teamSize });
 
   return NextResponse.json(
     {
       ok: true,
       message: `Thanks, ${name.split(" ")[0]}. A member of the enterprise team will reach out to ${workEmail} within one business day.`,
-      received: { name, workEmail, company, teamSize: teamSize ?? "unspecified" },
     },
     { status: 200 }
   );

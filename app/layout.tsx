@@ -8,6 +8,7 @@ const display = Newsreader({
   style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
+  adjustFontFallback: false,
 });
 
 const body = Inter({
