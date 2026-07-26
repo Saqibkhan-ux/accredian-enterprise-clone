@@ -1,43 +1,40 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 
-export default function Reveal({
-  children,
-  delayMs = 0,
-  className = "",
-}: {
+type RevealProps = {
   children: ReactNode;
   delayMs?: number;
-  className?: string;
-}) {
+};
+
+export default function Reveal({ children, delayMs = 0 }: RevealProps) {
+  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
+    // ref.current is not available on the server, so we need to
+    // guard this logic to run only on the client.
+    const element = ref.current;
+    if (!element) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
+          setIsVisible(true);
+          observer.unobserve(element);
         }
       },
-      { threshold: 0.15 }
+      // Trigger the animation when the element is 50px from the bottom of the viewport
+      { rootMargin: "0px 0px -50px 0px" }
     );
 
-    observer.observe(node);
-    return () => observer.disconnect();
+    observer.observe(element);
+
+    return () => observer.unobserve(element);
   }, []);
 
   return (
-    <div
-      ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
-      style={{ animationDelay: `${delayMs}ms` }}
-    >
+    <div ref={ref} className={`reveal ${isVisible ? "is-visible" : ""}`} style={{ animationDelay: `${delayMs}ms` }}>
       {children}
     </div>
   );
