@@ -35,16 +35,12 @@ export default function Reveal({ children, delayMs = 0, className }: RevealProps
   }, []);
 
   return (
-  <div ref={ref} className={className}>
-    {children}
-  </div>
-
-    // <div
-    //   ref={ref}
-    //   className={`reveal ${isVisible ? "is-visible" : ""} ${className ?? ""}`}
-    //   style={{ animationDelay: `${delayMs}ms` }}
-    // >
-    //   {children}
-    // </div>
+    <div
+      ref={ref}
+      className={`reveal ${isVisible ? "is-visible" : ""} ${className ?? ""}`}
+      style={{ animationDelay: `${delayMs}ms` }}
+    >
+      {children}
+    </div>
   );
 }
